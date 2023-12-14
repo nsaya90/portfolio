@@ -1,7 +1,8 @@
 <template>
-  <div><h1 class="text-center">A propos de moi</h1></div>
-  <div class="row d-flex justify-content-around">
-    <div class="col-12 col-lg-4 w-lg-25 p-5">
+  <div><h1>A PROPOS DE MOI</h1></div>
+
+  <div class="box-about-me">
+    <div class="box-text-about-me">
       <p>
         Je suis ravi de partager avec vous une étape passionnante de ma carrière
         professionnelle. Après avoir consacré une décennie enrichissante au
@@ -15,13 +16,12 @@
         profit dans le domaine du développement web.
       </p>
     </div>
-    <div class="col-12 col-lg-4">
+    <div class="">
       <img
         src="../assets/images/portrait.jpg"
         alt=""
         height="150"
-        width="150"
-      />
+        width="150" />
     </div>
   </div>
 </template>
@@ -30,4 +30,48 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+h1 {
+  text-align: center;
+  padding-top: 15px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Afacad:wght@400&family=Lato:wght@300&display=swap");
+
+h1 {
+  font-family: "Afacad", sans-serif;
+}
+p {
+  font-family: "Afacad", sans-serif;
+  font-size: 25px;
+}
+
+/* -----------------------Mobile -----------*/
+@media (max-width: 567px) {
+  .box-about-me {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .box-text-about-me {
+    padding: 10px;
+   
+  }
+}
+
+/* ----------- DESKTOP --------------- */
+@media (min-width: 567px) {
+  .box-about-me {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .box-text-about-me {
+    padding-top: 25px;
+    width: 40%;
+  }
+}
+</style>
