@@ -3,10 +3,10 @@
     <div class="box-skills-web">
       <div class="box">
         <div class="box-web">
-          <h2 class="animate__animated animate__zoomIn">
+          <h2 :class="animate_1">
             <i class="fa-solid fa-code"></i> Compétences techniques
           </h2>
-          <ul class="animate__animated animate__lightSpeedInRight">
+          <ul :class="animate_2">
             <li>PHP</li>
             <li>MySQL</li>
             <li>Laravel</li>
@@ -17,10 +17,10 @@
           </ul>
         </div>
         <div class="soft-skills">
-          <h2 class="animate__animated animate__zoomIn">
+          <h2 :class="animate_3">
             <i class="fa-regular fa-user"></i> Savoir-être
           </h2>
-          <ul class="animate__animated animate__lightSpeedInLeft">
+          <ul :class="animate_4">
             <li>Rigoureux</li>
             <li>Autonome</li>
             <li>Organisé</li>
@@ -28,7 +28,7 @@
           </ul>
         </div>
       </div>
-      <div class="box-cv animate__animated animate__fadeIn">
+      <div :class="animate_5">
         <img src="../assets/cv.png" class="cv" alt="" />
       </div>
     </div>
@@ -36,10 +36,62 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      scrollPosition: 0,
+      targetElementOffset: 1000, // Ajoutez la valeur de l'offset de l'élément cible ici
+      condition: false,
+    };
+  },
+  methods: {
+    handleScroll() {
+      // Mettre à jour la position de défilement actuelle
+      this.scrollPosition = window.scrollY;
+
+      // Vérifier si l'utilisateur a atteint l'endroit souhaité
+      if (this.scrollPosition >= this.targetElementOffset) {
+        // L'utilisateur a atteint l'endroit souhaité
+        this.condition = true; // Vous pouvez effectuer des actions supplémentaires ici
+      }
+    },
+  },
+  computed: {
+    animate_1() {
+      return { "animate__animated animate__zoomIn": this.condition };
+    },
+    animate_2(){
+      return { "animate__animated animate__lightSpeedInRight" : this.condition}
+    },
+    animate_3(){
+      return{ "animate__animated animate__zoomIn": this.condition}
+    },
+    animate_4(){
+      return { "animate__animated animate__lightSpeedInLeft" : this.condition}
+    },
+    animate_5(){
+      return { "animate__animated animate__fadeIn" : this.condition}
+    }
+  },
+  mounted() {
+    // Ajouter un gestionnaire d'événement de défilement
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    // Supprimer le gestionnaire d'événement de défilement lors de la destruction du composant
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+};
 </script>
 
+
 <style scoped>
+.animate__animated.animate__zoomIn, .animate__animated.animate__lightSpeedInLeft, .animate__animated.animate__lightSpeedInRight , .animate__animated.animate__fadeIn {
+  --animate-duration: 3s;
+}
+.test {
+  background-color: red;
+}
 .box-my-skills {
   background-color: rgba(17, 172, 224, 0.989);
   color: white;
@@ -144,6 +196,7 @@ export default {};
   .box {
     display: flex;
     flex-direction: column;
+   
     width: 100%;
   }
   .box-web li {
@@ -156,6 +209,7 @@ export default {};
     color: white;
     display: inline-block;
     width: 25%;
+   
   }
 
   .soft-skills li {
@@ -167,17 +221,20 @@ export default {};
     color: white;
     list-style-type: none;
     display: inline-block;
+    width: 25%;
   }
   .box-skills {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
-    padding: 15px;
+  
   }
 
   .box-skills-web {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 25px;
   }
 }
 </style>
