@@ -7,4 +7,6 @@ import "bootstrap";
 
 import "animate.css";
 
+import '@fortawesome/fontawesome-free/css/all.css'
+
 createApp(App).use(router).mount("#app");

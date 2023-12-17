@@ -33,7 +33,7 @@ p {
   --animate-duration: 2s;
 }
 
-/* -----------------------Mobile */
+/* -----------------------Mobile------------------------- */
 @media (max-width: 567px) {
   .box-image {
     background-image: url(../assets/images/title_panel.png);
@@ -54,7 +54,7 @@ p {
   }
 }
 
-/* --------------------------DESKTOP */
+/* --------------------------DESKTOP -----------------*/
 @media (min-width: 567px) {
   p {
     font-size: 28px;

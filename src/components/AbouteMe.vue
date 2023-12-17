@@ -53,6 +53,7 @@ p {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 25px;
   }
 
   .box-text-about-me {
